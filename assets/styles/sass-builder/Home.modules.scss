@@ -1,0 +1,663 @@
+// Color Variables
+$primary-text: #16161D;
+$secondary-text: rgba(32, 32, 32, 0.8);
+$white: #fff;
+$smoke-white: #F8F7FC;
+$darken-white: #F3F3F3;
+$lighten-gray: #F5F5F5;
+$yellow: #F8B20E;
+$purple: #8E489B;
+$cyan: #00B0D5;
+$transparent: transparent;
+
+// Border Variables
+$border-box: 2px solid rgba(164, 164, 164, 0.5);
+$side-box: 1px solid rgba(118, 118, 118, 0.2);
+
+// Mixin Function Start //
+@mixin button($color: $yellow, $sizeValue: 0.7rem 2rem, $border: $transparent) {
+    border: 2px solid $border;
+    border-radius: 4px;
+    background: $color;
+    padding: $sizeValue;
+    outline: none;
+    cursor: pointer;
+}
+
+.container{
+    max-width: 77.5rem;
+    margin: 74px auto;
+    padding: 0 1rem;
+}
+
+.left-section{
+    flex: 1;
+
+    &__about{
+        margin: 0;
+
+        &__workflow{
+            &--title{
+                color: $primary-text;
+                font-size: 20px;
+            }
+            &--description{
+                margin: 1rem 0;
+                font-weight: 400;
+                color: $secondary-text;
+                font-size: 15px;
+            }
+        }
+        &__website{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+
+            &--img{
+                margin: 1rem 0;
+                width: 100%;
+                height: 50%;
+            }
+            &__caption{
+                &--title{
+                    color: $primary-text;
+                    font-weight: 700;
+                    font-size: 20px;
+                }
+                &--description{
+                    margin: 0.5rem 0;
+                    color: $secondary-text;
+                    font-weight: 400;
+                    font-size: 15px;
+                }
+            }
+            &__button{
+                &__primary{
+                    font-weight: 600;
+                    font-size: 14px;
+                    color: $primary-text;
+                    @include button($color: $yellow, $sizeValue: 0.5rem 0.5rem, $border: $transparent);
+
+                    &--hover:hover{
+                        color: $white;
+                        @include button($color: $purple, $sizeValue: 0.5rem 0.5rem, $border: $transparent)
+                    }
+                    &--hover::after{
+                        content: " ";
+                        border: solid $white;
+                        border-width: 0 3px 3px 0;
+                        display: inline-block;
+                        padding: 3px;
+                        transform: rotate(-45deg);
+                        -webkit-transform: rotate(-45deg);
+                        opacity: 0;
+                    }
+                    &--hover:hover::after{
+                        transition: all 0.2s ease-in-out;
+                        margin-left: 1rem;
+                        opacity: 1;
+                        color: $white;
+                    }
+                }
+                &__tertiary{
+                    font-weight: 600;
+                    font-size: 14px;
+                    color: $primary-text;
+                    @include button($color: $transparent, $sizeValue: 0.5rem 0.5rem, $border: $transparent);
+                    
+                    &--hover::after{
+                        content: " ";
+                        margin-left: 5px;
+                        border: solid $cyan;
+                        border-width: 0 3px 3px 0;
+                        display: inline-block;
+                        padding: 3px;
+                        transform: rotate(-45deg);
+                        -webkit-transform: rotate(-45deg);
+                        opacity: 1;
+                    }
+                    &--hover:hover::after{
+                        border: solid $purple;
+                        border-width: 0 3px 3px 0;
+                        transition: all 0.2s ease-in-out;
+                        margin-left: 1rem;
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+    &__program{
+        &--title{
+            margin: 1rem 0;
+            color: $primary-text;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        &__box{
+            border: $border-box;
+            border-radius: 4px;
+            height: 100%;
+
+            &__choice{
+                display: flex;
+                justify-content: space-around;
+                
+                &__year{
+                    color: $primary-text;
+                    background: $smoke-white;
+                    border: 2px solid transparent;
+                    font-size: 15px;
+                    font-weight: 400;
+                    width: 100%;
+                    padding: 16px;
+                    cursor: pointer;
+
+                    &--active{
+                        background: $white;
+                        border-top: 2px solid $yellow;
+                    }
+                }
+                &__list{
+                    padding: 20px;
+                }
+                &__item{
+                    padding: 4px 0;
+                    color: $yellow;
+                    list-style-type: square;
+                }
+                &__item-name{
+                    color: $primary-text;
+                }
+            }
+        }
+    }
+    &__resources{
+        &--title{
+            margin: 1rem 0;
+            color: $primary-text;
+            font-size: 28px;
+            font-weight: 600;
+        }
+        &__content{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;      
+        }
+        &__box{
+            background: $darken-white;
+            padding: 20px 23px; 
+            flex: 1 1 300px;
+            height: 100%;
+
+            &--light{
+                background: $smoke-white;
+            }
+        }
+        &__top{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            &--date{
+                color: $secondary-text;
+                font-weight: 700;
+                font-size: 12px;
+            }
+            &__mark{
+                border: 0.5px solid $darken-white;
+                color: $secondary-text;
+                background: $white;
+                padding: 6px 10px;
+                
+                &--highlight{
+                    border-left: 4px solid $yellow;
+                }
+            }
+        }
+        &__location{
+            margin: 5px 0 50px 0;
+            color: $secondary-text;
+            font-weight: 700;
+            font-size: 12px;
+            &--held{
+                color: $secondary-text;
+                background: $transparent;
+                font-weight: 400;
+                font-size: 12px;
+            }
+        }
+        &--mid-text{
+            color: $secondary-text;
+            margin: 10px 0;
+            font-weight: 600;
+            font-size: 19px;
+        }
+        &--bot-text{
+            color: $secondary-text;
+            font-weight: 400;
+            font-size: 14px;
+        }
+        &__btn{
+            display: flex;
+            justify-content: center;
+            margin: 2rem;
+        }
+        &__secondary{
+            @include button($color:$transparent, $sizeValue: 0.7rem 2rem, $border: $yellow);
+            
+            &--hover:hover{
+                @include button($color: $transparent, $sizeValue: 0.7rem 2rem, $border: $purple)
+            }
+            &--hover::after{
+                content: " ";
+                border: solid $purple;
+                border-width: 0 3px 3px 0;
+                display: inline-block;
+                padding: 3px;
+                transform: rotate(-45deg);
+                -webkit-transform: rotate(-45deg);
+                opacity: 0;
+            }
+            &--hover:hover::after{
+                transition: all 0.2s ease-in-out;
+                margin-left: 1rem;
+                opacity: 1;
+            }
+
+            &--link{
+                font-weight: 600;
+                font-size: 16px;   
+            }
+        }
+    }
+    &__contact{
+        padding: 40px;
+        flex: 1 1 auto;
+        background: $lighten-gray;
+
+        &--connect{
+            color: $secondary-text;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 19px;
+        }
+        &--more-info{
+            color: $secondary-text;
+            padding: 14px 0;
+            font-weight: 400;
+            font-size: 16px;
+        }
+
+        &__inputs{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 20px;
+            &__user{
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+            &--info{
+                width: 200px;
+                height: 40px;
+            }
+            &--comment{
+                width: 200px;
+                height: 100px;
+            }
+            input[type=text]{
+                border: $border-box;
+                color: $secondary-text;
+                padding: 12px 20px;
+            }
+            input[type=email]{
+                border: $border-box;
+                color: $secondary-text;
+                padding: 12px 20px;
+            }
+        }
+        &__btn{
+            margin-top: 20px;
+            @include button($color: $yellow, $sizeValue: 0.5rem 2rem, $border: $transparent);
+
+            &--hover:hover{
+                color: $white;
+                @include button($color: $purple, $sizeValue: 0.5rem 2rem, $border: $transparent)
+            }
+            &--hover::after{
+                content: " ";
+                border: solid $white;
+                border-width: 0 3px 3px 0;
+                display: inline-block;
+                padding: 3px;
+                transform: rotate(-45deg);
+                -webkit-transform: rotate(-45deg);
+                opacity: 0;
+            }
+            &--hover:hover::after{
+                transition: all 0.2s ease-in-out;
+                margin-left: 1rem;
+                opacity: 1;
+                color: $white;
+            }
+        }
+    }
+}
+
+.right-section{
+    flex: 0 1 400px;
+    &__box{
+        margin: 25px 0;
+        padding: 20px;
+        border: $side-box;
+        border-radius: 4px;
+    }
+    &__box-content{
+        &--bold-text{
+            color: $primary-text;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        &--normal-text{
+            color: $secondary-text;
+            font-weight: 400;
+            font-size: 16px;
+        }
+    }
+    &__event-info{
+        margin-top: 14px;
+        padding: 20px;
+        background: $smoke-white;
+        height: 133px;
+
+        &--date{
+            color: $secondary-text;
+            font-weight: 700;
+            font-size: 12px;
+        }
+        &--location{
+            margin: 5px 0;
+            color: $secondary-text;
+            font-weight: 700;
+            font-size: 12px;
+        }
+        &--held{
+            background: $transparent;
+            color: $secondary-text;
+            font-weight: 400;
+            font-size: 12px;
+        }
+        &--title{
+            margin: 15px 0;
+            color: $primary-text;
+            font-weight: 600;
+            font-size: 19px;
+        }
+    }
+    &__related-info{
+        margin-top: 14px;
+
+        &--img{
+            width: 100%;
+        }
+        &--caption{
+            color: $secondary-text;
+            margin-top: 15px;
+            font-weight: 600;
+            font-size: 15px;
+        }
+    }
+    &__related-article{
+        margin: 12px 0;
+        &--icon{
+            margin-right: 10px;
+            color: $cyan;
+        }
+        &--link{
+            color: $secondary-text;
+            font-weight: 600;
+            font-size: 15px;
+            &:hover{
+                border-bottom: 1.5px solid $cyan;
+
+            }
+        }
+    }
+    &__related-resources{
+        margin-top: 14px;
+        padding: 20px;
+        background: $darken-white;
+        height: 100%;
+
+        &__top{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            &--date{
+                color: $secondary-text;
+                font-weight: 700;
+                font-size: 12px;
+            }
+            &--mark{
+                padding: 6px 10px;
+                background: $white;
+                color: $secondary-text;
+                font-weight: 400;
+                font-size: 13px;
+            }
+        }
+        &--mid-text{
+            margin: 10px 0;
+            color: $primary-text;
+            font-weight: 600;
+            font-size: 19px;
+        }
+        &--bot-text{
+            color: $secondary-text;
+            font-weight: 400;
+            font-size: 14px;
+        }
+    }
+    &__connect{
+        display: flex;
+        gap: 15px;
+
+        &--link{
+            margin-top: 1rem;
+            color: $secondary-text;
+            font-size: 3rem;
+        }
+    }
+
+}
+
+.footer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: $lighten-gray;
+    margin: 0 auto;
+    max-width: 77.5rem;
+
+    &__left{
+        order: 9999;
+        &--img{
+            width: 100%;
+        }
+    }
+    &__right{
+        margin-left: 2rem;
+        order: -9999;
+
+        &--title{
+            margin-top: 2rem;
+            text-transform: uppercase;
+            color: $primary-text;
+            font-weight: 600;
+            font-size: 20px;
+        }
+        &--description{
+            margin: 1rem 0;
+            color: $secondary-text;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        &__btn{
+            margin-bottom: 1rem;
+            font-weight: 700;
+            font-size: 16px;    
+            @include button($color: $yellow, $sizeValue: 0.5rem 2rem, $border: $transparent);
+
+            &--hover:hover{
+                color: $white;
+                @include button($color: $purple, $sizeValue: 0.5rem 2rem, $border: $transparent)
+            }
+
+            &--hover::after{
+                content: " ";
+                border: solid $white;
+                border-width: 0 3px 3px 0;
+                display: inline-block;
+                padding: 3px;
+                transform: rotate(-45deg);
+                -webkit-transform: rotate(-45deg);
+                opacity: 0;
+            }
+            &--hover:hover::after{
+                transition: all 0.2s ease-in-out;
+                margin-left: 1rem;
+                opacity: 1;
+                color: $white;
+            }
+        }
+    }
+}
+
+
+// MOBILE
+@media screen and (min-width: 1024px){
+    .container{
+        display: flex;
+        gap: 20px;
+    }
+    .left-section{
+        flex: 1;
+    
+        &__about{
+            &__workflow{
+                &--title{
+                    font-size: 35px;
+                }
+                &--description{
+                    font-size: 18px;
+                }
+            }
+            &__website{
+                flex-direction: row;
+
+                &--img{
+                    width: 182px;
+                    height: 166px;
+                }
+                &__caption{
+                    &--title{
+                        font-size: 28px;
+                    }
+                    &--description{
+                        font-size: 16px;
+                    }
+                }
+                &__button{
+                    &__primary{
+                        font-size: 16px;
+                        @include button($color: $yellow, $sizeValue: 0.7rem 2rem, $border: $transparent);
+
+                        &--hover:hover{
+                            color: $white;
+                            @include button($color: $purple, $sizeValue: 0.7rem 2rem, $border: $transparent)
+                        }
+
+                    }
+                    &__tertiary{
+                        font-weight: 600;
+                        font-size: 16px;
+                        color: $primary-text;
+                        @include button($color: $transparent, $sizeValue: 0.7rem 0.9rem, $border: $transparent);
+                    }
+                }
+            }
+        }
+        &__program{
+            &--title{
+                font-size: 28px;
+            }
+            &__box{
+                border: $border-box;
+                border-radius: 4px;
+
+                &__choice{
+                    &__year{
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+        &__resources{
+            &--title{
+                font-size: 28px;
+            }
+            &__box{
+                height: 173px;
+            }
+        }
+        &__contact{    
+            &__inputs{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 20px;
+
+                &__user{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                }
+                &--info{
+                    width: 200px;
+                    height: 40px;
+                }
+                &--comment{
+                    width: 350px;
+                    height: 100px;
+                }
+            }
+        }
+    }
+    .footer{
+        display: flex;
+        flex-direction: row;
+
+        &__left{
+            order: -9999;
+            
+        }
+        &__right{
+            max-width: 400px;
+            order: 9999;
+
+            &--title{
+                font-size: 30px;
+            }
+            &--description{
+                font-size: 18px;
+            }
+        }
+    }
+}
