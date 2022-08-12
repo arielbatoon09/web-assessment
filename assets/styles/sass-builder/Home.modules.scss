@@ -1,4 +1,4 @@
-// Color Variables
+// Color Variables //
 $primary-text: #16161D;
 $secondary-text: rgba(32, 32, 32, 0.8);
 $white: #fff;
@@ -10,11 +10,11 @@ $purple: #8E489B;
 $cyan: #00B0D5;
 $transparent: transparent;
 
-// Border Variables
-$border-box: 2px solid rgba(164, 164, 164, 0.5);
-$side-box: 1px solid rgba(118, 118, 118, 0.2);
+// Border Variables //
+$primary-box: 2px solid rgba(164, 164, 164, 0.5);
+$secondary-box: 1px solid rgba(118, 118, 118, 0.2);
 
-// Mixin Function Start //
+// Mixin Function //
 @mixin button($color: $yellow, $sizeValue: 0.7rem 2rem, $border: $transparent) {
     border: 2px solid $border;
     border-radius: 4px;
@@ -24,6 +24,7 @@ $side-box: 1px solid rgba(118, 118, 118, 0.2);
     cursor: pointer;
 }
 
+// GLOBAL BREAKPOINT //
 .container{
     max-width: 77.5rem;
     margin: 74px auto;
@@ -39,7 +40,7 @@ $side-box: 1px solid rgba(118, 118, 118, 0.2);
         &__workflow{
             &--title{
                 color: $primary-text;
-                font-size: 20px;
+                font-size: 28px;
             }
             &--description{
                 margin: 1rem 0;
@@ -137,7 +138,7 @@ $side-box: 1px solid rgba(118, 118, 118, 0.2);
             font-weight: 700;
         }
         &__box{
-            border: $border-box;
+            border: $primary-box;
             border-radius: 4px;
             height: 100%;
 
@@ -273,80 +274,6 @@ $side-box: 1px solid rgba(118, 118, 118, 0.2);
             }
         }
     }
-    &__contact{
-        padding: 40px;
-        flex: 1 1 auto;
-        background: $lighten-gray;
-
-        &--connect{
-            color: $secondary-text;
-            text-transform: uppercase;
-            font-weight: 600;
-            font-size: 19px;
-        }
-        &--more-info{
-            color: $secondary-text;
-            padding: 14px 0;
-            font-weight: 400;
-            font-size: 16px;
-        }
-
-        &__inputs{
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 20px;
-            &__user{
-                display: flex;
-                flex-direction: column;
-                gap: 5px;
-            }
-            &--info{
-                width: 200px;
-                height: 40px;
-            }
-            &--comment{
-                width: 200px;
-                height: 100px;
-            }
-            input[type=text]{
-                border: $border-box;
-                color: $secondary-text;
-                padding: 12px 20px;
-            }
-            input[type=email]{
-                border: $border-box;
-                color: $secondary-text;
-                padding: 12px 20px;
-            }
-        }
-        &__btn{
-            margin-top: 20px;
-            @include button($color: $yellow, $sizeValue: 0.5rem 2rem, $border: $transparent);
-
-            &--hover:hover{
-                color: $white;
-                @include button($color: $purple, $sizeValue: 0.5rem 2rem, $border: $transparent)
-            }
-            &--hover::after{
-                content: " ";
-                border: solid $white;
-                border-width: 0 3px 3px 0;
-                display: inline-block;
-                padding: 3px;
-                transform: rotate(-45deg);
-                -webkit-transform: rotate(-45deg);
-                opacity: 0;
-            }
-            &--hover:hover::after{
-                transition: all 0.2s ease-in-out;
-                margin-left: 1rem;
-                opacity: 1;
-                color: $white;
-            }
-        }
-    }
 }
 
 .right-section{
@@ -354,7 +281,7 @@ $side-box: 1px solid rgba(118, 118, 118, 0.2);
     &__box{
         margin: 25px 0;
         padding: 20px;
-        border: $side-box;
+        border: $secondary-box;
         border-radius: 4px;
     }
     &__box-content{
@@ -477,6 +404,71 @@ $side-box: 1px solid rgba(118, 118, 118, 0.2);
 
 }
 
+.contact{
+    transform: translateY(-10%);
+    margin: 2rem auto;
+
+    &__form-container{
+        border: $secondary-box;
+        border-radius: 20px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        width: 100%;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+
+        &--title{
+            color: $primary-text;
+            font-size: 25px;
+            font-weight: 600;
+        }
+        &--description{
+            margin: 1rem 0;
+            color: $secondary-text;
+            font-size: 15px;
+            font-weight: 400;
+        }
+
+        input[type=text], input[type=email], textarea{
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+            Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+            max-width: 100%;
+            padding: 16px;
+            border: $secondary-box;
+            border-radius: 25px;
+            margin: 6px 0 16px 0;
+          }
+    }
+    &__btn{
+        width: 100%;
+        font-weight: 600;
+        font-size: 16px;
+        color: $primary-text;
+        @include button($color: $yellow, $sizeValue: 0.5rem 2rem, $border: $transparent);
+
+        &--hover:hover{
+            color: $white;
+            @include button($color: $purple, $sizeValue: 0.5rem 2rem, $border: $transparent);
+        }
+        &--hover::after{
+            content: " ";
+                border: solid $white;
+                border-width: 0 3px 3px 0;
+                display: inline-block;
+                padding: 3px;
+                transform: rotate(-45deg);
+                -webkit-transform: rotate(-45deg);
+                opacity: 0;
+            }
+            &--hover:hover::after{
+                transition: all 0.2s ease-in-out;
+                margin-left: 1rem;
+                opacity: 1;
+                color: $white;
+            }
+    }
+}
+
 .footer{
     display: flex;
     align-items: center;
@@ -492,7 +484,7 @@ $side-box: 1px solid rgba(118, 118, 118, 0.2);
         }
     }
     &__right{
-        margin-left: 2rem;
+        margin: 0 5rem;
         order: -9999;
 
         &--title{
@@ -540,7 +532,7 @@ $side-box: 1px solid rgba(118, 118, 118, 0.2);
 }
 
 
-// MOBILE
+// BREAKPOINT FOR 1024PX ABOVE WIDTH //
 @media screen and (min-width: 1024px){
     .container{
         display: flex;
@@ -579,7 +571,6 @@ $side-box: 1px solid rgba(118, 118, 118, 0.2);
                         @include button($color: $yellow, $sizeValue: 0.7rem 2rem, $border: $transparent);
 
                         &--hover:hover{
-                            color: $white;
                             @include button($color: $purple, $sizeValue: 0.7rem 2rem, $border: $transparent)
                         }
 
@@ -598,7 +589,7 @@ $side-box: 1px solid rgba(118, 118, 118, 0.2);
                 font-size: 28px;
             }
             &__box{
-                border: $border-box;
+                border: $primary-box;
                 border-radius: 4px;
 
                 &__choice{
@@ -616,30 +607,34 @@ $side-box: 1px solid rgba(118, 118, 118, 0.2);
                 height: 173px;
             }
         }
-        &__contact{    
-            &__inputs{
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                flex-wrap: wrap;
-                gap: 20px;
+    }
+    .contact{
+        max-width: 52.5rem;
+        transform: translate(-5%, -10%);
+    
+        &__form-container{
+            width: 65%;
 
-                &__user{
-                    display: flex;
-                    flex-direction: column;
-                    gap: 20px;
-                }
-                &--info{
-                    width: 200px;
-                    height: 40px;
-                }
-                &--comment{
-                    width: 350px;
-                    height: 100px;
-                }
+            &--title{
+                font-size: 40px;
+            }
+            &--description{
+                font-size: 16px;
+            }
+    
+            input[type=text], input[type=email], textarea{
+                max-width: 30rem;
+              }
+        }
+        &__btn{
+            width: 50%;
+            @include button($color: $yellow, $sizeValue: 0.7rem 2rem, $border: $transparent);
+    
+            &--hover:hover{
+                @include button($color: $purple, $sizeValue: 0.7rem 2rem, $border: $transparent);
             }
         }
-    }
+    }    
     .footer{
         display: flex;
         flex-direction: row;
